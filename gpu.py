@@ -2,7 +2,6 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import plotly.express as px
 import pandas as pd
-import time
 import smtplib
 import ssl
 from email.mime.text import MIMEText
@@ -13,7 +12,7 @@ def send_email():
 
     sender_email = 'jon.brar10@gmail.com'
     receiver_email = 'jon.brar10@gmail.com'
-    password = 'Your Password'
+    password = 'airjiqicmwwkpdvb'
 
     message = MIMEMultipart("alternative")
     message['Subject'] = 'A New GPU is in stock!'
@@ -98,10 +97,15 @@ for item in item_container:
 f.close()
 
 
-data = pd.read_csv("gpuinfo.csv", sep=',')
 
+data = pd.read_csv("gpuinfo.csv", sep=',', on_bad_lines='skip')
 fig = px.bar(data, x='product', y='gpu_price',
              title='3080 GPU Prices (NewEgg)', hover_name='stock')
 
-
 fig.show()
+
+    
+
+
+
+
